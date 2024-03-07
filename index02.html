@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(14, 14, 15, 0.872);
+        }
+
+        .container {
+            width: 400px;
+            height: 500px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .square {
+            width: 15px;
+            height: 15px;
+            background-color: #1d1d1d;
+            border-radius: 3px;
+            margin: 5px;
+            box-shadow: 5px 5px 10px rgba(128, 128, 128, 0.385);
+            transition: 3s ease;
+        }
+
+        .square:hover {
+            transition-duration: 0ms;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+
+    </div>
+
+
+    <script>
+        const container = document.querySelector(".container");
+        const nsquare = 500;
+        const colors = ["green", "red", "yellow", "purple","blue","orange","cyan"];
+        function random(colors) {
+            return colors[Math.floor(Math.random() * colors.length)]
+        }
+
+        function setcolor(element) {
+            element.style.backgroundColor = random(colors);
+        }
+
+        function unsetcolor(element) {
+            element.style.backgroundColor = "#1d1d1d";
+            element.style.boxShadow = "5px 5px 10px rgba(128, 128, 128, 0.385)";
+        }
+
+        for (var i = 0; i < nsquare; i++) {
+            const square = document.createElement("div");
+            square.classList.add("square");
+            square.addEventListener("mouseover", () => {
+                setcolor(square)
+            })
+            square.addEventListener("mouseout", () => {
+                unsetcolor(square)
+            })
+            container.appendChild(square);
+        }
+
+    </script>
+</body>
+
+</html>
